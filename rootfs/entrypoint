@@ -1,3 +1,14 @@
 #!/usr/bin/env bash
 
-echo "done - $(whoami) - $UID:$GID"
+echo "current - $(whoami) - $UID:$GID"
+
+if [[ ! -z "$TZ" ]]; then
+  if [[ -f /usr/share/zoneinfo/$TZ ]]; then
+    ln -sf /usr/share/zoneinfo/$TZ /etc/localtime
+    echo "$TZ" > /etc/timezone
+  else
+    echo "WARNING: $TZ is not a valid timezone."
+  fi
+fi
+
+echo "done"

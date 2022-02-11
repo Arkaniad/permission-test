@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: permission-test
+spec:
+  template:
+    spec:
+      containers:
+      - name: permission-test
+        image: ghcr.io/arkaniad/permission-test:main
+      restartPolicy: Never
+      env:
+        - name: TZ
+          value: America/Chicago
+  backoffLimit: 4
+
