@@ -5,11 +5,12 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: Never
       containers:
       - name: permission-test
         image: ghcr.io/arkaniad/permission-test:main
-      restartPolicy: Never
-      env:
+        imagePullPolicy: Always
+        env:
         - name: TZ
           value: America/Chicago
   backoffLimit: 4
