@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 echo "current - $(whoami) - $UID"
 
+echo "perms: /usr/share/zoneinfo"
 ls -al /usr/share/zoneinfo
+
+echo "perms: /etc"
+ls -al /etc
+
+echo "perms: /etc/localtime"
 ls -al /etc/localtime
+
+echo "perms: /etc/timezone"
+
 ls -al /etc/timezone
 
 if [[ ! -z "$TZ" ]]; then

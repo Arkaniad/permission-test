@@ -1,13 +1,15 @@
 FROM debian:bullseye-slim
 
-RUN chgrp 0 /etc/timezone && \
-    chgrp 0 /etc/localtime && \
-    chgrp -R 0 /usr/share/zoneinfo && \
-    chmod g=u /etc/timezone && \
-    chmod g=u /etc/localtime && \
-    chmod -R g=u /usr/share/zoneinfo
-
 COPY rootfs /
+
+RUN chgrp -R 0 /usr/share/zoneinfo && \
+    chgrp 0 /etc && \
+    chgrp 0 /etc/localtime && \
+    chgrp 0 /etc/timezone && \
+    chmod g=u /etc && \
+    chmod g=u /etc/localtime && \
+    chmod g=u /etc/timezone && \
+    chmod -R g=u /usr/share/zoneinfo
 
 ENTRYPOINT /entrypoint
 
