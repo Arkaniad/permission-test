@@ -1,13 +1,12 @@
 FROM debian:bullseye-slim
 
-RUN groupadd -g 1000 unprivileged && useradd -r -u 1000 -g unprivileged unprivileged
-RUN chown root:0 /etc/timezone && \
-    chown root:0 /etc/localtime && \
-    chown root:0 -R /usr/share/zoneinfo* && \
-    chmod go+rw /etc/timezone && \
-    chmod go+rw /etc/localtime && \
-    chmod -R go+rw /usr/share/zoneinfo
-USER unprivileged:unprivileged
+RUN chgrp 0 /etc/timezone && \
+    chgrp 0 /etc/localtime && \
+    chgrp -R 0 /usr/share/zoneinfo && \
+    chmod g=u /etc/timezone && \
+    chmod g=u /etc/localtime && \
+    chmod -R g=u /usr/share/zoneinfo
+
 COPY rootfs /
 
 ENTRYPOINT /entrypoint
