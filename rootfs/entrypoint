@@ -2,6 +2,10 @@
 
 echo "current - $(whoami) - $UID:$GID"
 
+ls -al /usr/share/zoneinfo
+ls -al /etc/localtime
+ls -al /etc/timezone
+
 if [[ ! -z "$TZ" ]]; then
   if [[ -f /usr/share/zoneinfo/$TZ ]]; then
     ln -sf /usr/share/zoneinfo/$TZ /etc/localtime
