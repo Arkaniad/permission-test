@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "current - $(whoami) - $UID:$GID"
+echo "current - $(whoami) - $UID"
 
 ls -al /usr/share/zoneinfo
 ls -al /etc/localtime
